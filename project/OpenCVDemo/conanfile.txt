@@ -1,0 +1,5 @@
+[requires]
+opencv-ue4/3.3.0@adamrehn/4.19
+
+[generators]
+json
