@@ -33,6 +33,7 @@ class OpenCVUE4Conan(ConanFile):
             "-DWITH_OPENNI2=OFF", "-DWITH_OPENVX=OFF", "-DWITH_PVAPI=OFF", "-DWITH_QT=OFF",
             "-DWITH_TBB=OFF", "-DWITH_TIFF=OFF", "-DWITH_VFW=OFF", "-DWITH_VTK=OFF",
             "-DWITH_WEBP=OFF", "-DWITH_WIN32UI=OFF", "-DWITH_XIMEA=OFF", "-DWITH_ITT=OFF",
+            "-DBUILD_WITH_STATIC_CRT=OFF",
             
             # Just build a few core modules
             "-DBUILD_opencv_apps=OFF", "-DBUILD_opencv_calib3d=OFF", "-DBUILD_opencv_core=ON",
