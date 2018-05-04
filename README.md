@@ -45,7 +45,7 @@ An example [Jenkinsfile](./packages/opencv-ue4/Jenkinsfile) is provided that use
 
 To get everything up and running:
 
-1. Follow the instructions in the [docker-ue4](https://github.com/adamrehn/ue4-docker) repository README to create a the Docker images for Unreal Engine 4 that will be used for performing builds. **The example Jenkinsfile requires Unreal Engine 4.19.1.** Create a Windows Docker image on a Windows host and a Linux Docker image on either a Linux or macOS host (Linux is recommended since a macOS host will require additional configuration to set the appropriate memory and disk limits.) Note that the example code does not currently support Linux containers running under a Windows host.
+1. Follow the instructions in the [docker-ue4](https://github.com/adamrehn/ue4-docker) repository README to create the Docker images for Unreal Engine 4 that will be used for performing builds. **The example Jenkinsfile requires Unreal Engine 4.19.1.** Create a Windows Docker image on a Windows host and a Linux Docker image on either a Linux or macOS host (Linux is recommended since a macOS host will require additional configuration to set the appropriate memory and disk limits.) Note that the example code does not currently support Linux containers running under a Windows host.
 
 2. Next, spin up two Docker containers for the required servers:
     - Start an instance of [JFrog Artifactory Community Edition for C/C++](https://jfrog.com/blog/announcing-jfrog-artifactory-community-edition-c-c/) using the `docker.bintray.io/jfrog/artifactory-cpp-ce` Docker image.
