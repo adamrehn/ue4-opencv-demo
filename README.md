@@ -10,9 +10,9 @@ Note that Unreal Engine **4.19.0 or newer** is required.
 ## Contents
 
 - [Building the demo](#building-the-demo)
-    - [Step 1: Installing the conan-ue4cli wrapper packages](#step-1:-installing-the-conan-ue4cli-wrapper-packages)
-    - [Step 2: Compiling our custom OpenCV build](#step-2:-compiling-our-custom-opencv-build)
-    - [Step 3: Building and running the UE4 test project](#step-3:-building-and-running-the-ue4-test-project)
+    - [Step 1: Installing the conan-ue4cli wrapper packages](#step-1-installing-the-conan-ue4cli-wrapper-packages)
+    - [Step 2: Compiling our custom OpenCV build](#step-2-compiling-our-custom-opencv-build)
+    - [Step 3: Building and running the UE4 test project](#step-3-building-and-running-the-ue4-test-project)
 - [Performing automated builds with Jenkins](#performing-automated-builds-with-jenkins)
 
 
