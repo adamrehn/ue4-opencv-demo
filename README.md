@@ -84,4 +84,5 @@ To build the UE4 project:
 - Set the Script Path to `project/OpenCVDemo/Jenkinsfile`.
 - Click "Save" and you will be taken to the job page for the newly-created job.
 - To perform a build, simply click the "Build Now" button from the Jenkins job page.
-- Note that builds may take quite some time, particularly during the content cooking stage when shader compilation occurs.
+- The build may take quite some time, particularly during the content cooking stage when shader compilation occurs.
+- Note that this example demonstrates packaging a Shipping version of the project suitable for distribution, which is best suited to tagged releases. For simply testing that compilation succeeds (e.g. when validating a pull request), a simple `ue4 build` command should be sufficient.
