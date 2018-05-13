@@ -41,7 +41,7 @@ The source code for the "Get OpenCV Version" blueprint function is in [project/O
 
 ## Performing automated builds with Jenkins
 
-An example [Jenkinsfile](./packages/opencv-ue4/Jenkinsfile) is provided that uses the Windows and Linux Docker images from [docker-ue4](https://github.com/adamrehn/ue4-docker) to build the custom OpenCV Conan package. Performing an automated build requires a bit of up-front configuration to get working but is extremely straightforward once the required infrastructure is in place.
+Example Jenkinsfiles are provided that use the Windows and Linux Docker images from [docker-ue4](https://github.com/adamrehn/ue4-docker) to build both the custom OpenCV Conan package and the UE4 project that consumes it. Performing an automated build requires a bit of up-front configuration to get working but is extremely straightforward once the required infrastructure is in place.
 
 To get everything up and running:
 
@@ -67,11 +67,21 @@ To get everything up and running:
     - Add a Secret Text with ID `jenkins-conan-username` containing the administrator username for the Artifactory instance.
     - Add a Secret Text with ID `jenkins-conan-password` containing the administrator password for the Artifactory instance.
 
-7. Create the Jenkins job:
-    - Create a new Pipeline job with whatever name you like.
-    - Under the "Pipeline" section of the job configuration, set the Definition to *Pipeline script from SCM*.
-    - Set the SCM to *Git* and the Repository URL to `https://github.com/adamrehn/ue4-opencv-demo.git`. No credentials are required.
-    - Set the Script Path to `packages/opencv-ue4/Jenkinsfile`.
-    - Click "Save" and you will be taken to the job page for the newly-created job.
+To build the custom OpenCV Conan package:
 
-To perform a build, simply click the "Build Now" button from the Jenkins job page.
+- Create a new Pipeline job with whatever name you like.
+- Under the "Pipeline" section of the job configuration, set the Definition to *Pipeline script from SCM*.
+- Set the SCM to *Git* and the Repository URL to `https://github.com/adamrehn/ue4-opencv-demo.git`. No credentials are required.
+- Set the Script Path to `packages/opencv-ue4/Jenkinsfile`.
+- Click "Save" and you will be taken to the job page for the newly-created job.
+- To perform a build, simply click the "Build Now" button from the Jenkins job page.
+
+To build the UE4 project:
+
+- Create a new Pipeline job with whatever name you like.
+- Under the "Pipeline" section of the job configuration, set the Definition to *Pipeline script from SCM*.
+- Set the SCM to *Git* and the Repository URL to `https://github.com/adamrehn/ue4-opencv-demo.git`. No credentials are required.
+- Set the Script Path to `project/OpenCVDemo/Jenkinsfile`.
+- Click "Save" and you will be taken to the job page for the newly-created job.
+- To perform a build, simply click the "Build Now" button from the Jenkins job page.
+- Note that builds may take quite some time, particularly during the content cooking stage when shader compilation occurs.
