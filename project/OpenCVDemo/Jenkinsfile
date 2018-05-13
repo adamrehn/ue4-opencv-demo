@@ -26,7 +26,7 @@ pipeline
 					steps
 					{
 						//Invoke our build script inside the container, configuring conan to retrieve our dependency packages from the correct remote
-						windowsContainer('adamrehn/ue4-package:4.19.1', '-m 10GB',
+						windowsContainer('adamrehn/ue4-package:4.19.1', '-m 8GB',
 						[
 							'conan remote add jenkins "%JENKINS_CONAN_SERVER%"',
 							'cd project\\OpenCVDemo',
