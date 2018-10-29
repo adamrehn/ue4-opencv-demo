@@ -28,7 +28,7 @@ pipeline
 					steps
 					{
 						//Invoke our build script inside the container, configuring conan to upload the built package to the correct remote
-						windowsContainer('adamrehn/conan-ue4cli:4.19.1', '',
+						windowsContainer('adamrehn/ue4-full:4.19.1', '',
 						[
 							'conan remote add jenkins "%JENKINS_CONAN_SERVER%"',
 							'conan user -p "%JENKINS_CONAN_PASSWORD%" -r jenkins "%JENKINS_CONAN_USERNAME%"',
@@ -50,7 +50,7 @@ pipeline
 						{
 							//We require an agent capable of running Linux Docker containers
 							label 'linux-containers'
-							image 'adamrehn/conan-ue4cli:4.19.1'
+							image 'adamrehn/ue4-full:4.19.1'
 						}
 					}
 					steps
