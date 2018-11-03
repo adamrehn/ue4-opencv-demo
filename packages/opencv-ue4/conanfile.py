@@ -5,13 +5,16 @@ class OpenCVUE4Conan(ConanFile):
     version = "3.3.0"
     url = "https://github.com/adamrehn/ue4-opencv-demo"
     description = "OpenCV custom build for UE4"
-    settings = "os", "compiler", "build_type", "arch",
-    generators = "cmake",
+    settings = "os", "compiler", "build_type", "arch"
+    generators = "cmake"
     requires = (
-        "libcxx/ue4@adamrehn/generated",
-        "zlib/ue4@adamrehn/generated",
-        "UElibPNG/ue4@adamrehn/generated"
+        "libcxx/ue4@adamrehn/profile",
+        "ue4util/ue4@adamrehn/profile"
     )
+    
+    def requirements(self):
+        self.requires("zlib/ue4@adamrehn/{}".format(self.channel))
+        self.requires("UElibPNG/ue4@adamrehn/{}".format(self.channel))
     
     def cmake_flags(self):
         flags = [
@@ -54,12 +57,15 @@ class OpenCVUE4Conan(ConanFile):
         ]
         
         # Append the flags to ensure OpenCV's FindXXX modules use our UE4-specific dependencies
+        from ue4util import Utility
         zlib = self.deps_cpp_info["zlib"]
         libpng = self.deps_cpp_info["UElibPNG"]
-        flags.append("-DPNG_PNG_INCLUDE_DIR=" + libpng.includedirs[0])
-        flags.append("-DZLIB_INCLUDE_DIR=" + zlib.includedirs[0])
-        flags.append("-DZLIB_LIBRARY=" + zlib.libs[0])
-        flags.append("-DPNG_LIBRARY=" + libpng.libs[0])
+        flags.extend([
+            "-DPNG_PNG_INCLUDE_DIR=" + libpng.include_paths[0],
+            "-DPNG_LIBRARY=" + Utility.resolve_file(libpng.lib_paths[0], libpng.libs[0]),
+            "-DZLIB_INCLUDE_DIR=" + zlib.include_paths[0],
+            "-DZLIB_LIBRARY=" + Utility.resolve_file(zlib.lib_paths[0], zlib.libs[0])
+        ])
         return flags
     
     def source(self):
